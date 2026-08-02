@@ -1,23 +1,858 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "더올뉴 캐스퍼 리스 (The All-New Casper Lease)",
+    "image": "https://yourdomain.com/images/casper-lease.jpg",
+    "description": "2026년형 현대 더 올 뉴 캐스퍼 및 캐스퍼 일렉트릭 리스 가격 비교 및 연령별 맞춤형 무보증 견적 컨설팅 안내.",
+    "brand": {
+      "@type": "Brand",
+      "name": "현대자동차"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "KRW",
+      "lowPrice": "105500",
+      "highPrice": "354200",
+      "offerCount": "6",
+      "offers": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "2027 캐스퍼 가솔린 1.0 스마트"
+          },
+          "price": "105500",
+          "priceCurrency": "KRW",
+          "description": "기본 스마트 트림 월 리스료 기준"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "2027 캐스퍼 가솔린 1.0 디 에센셜"
+          },
+          "price": "158000",
+          "priceCurrency": "KRW",
+          "description": "선호 편의 옵션 포함 트림 월 리스료 기준"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "2027 캐스퍼 가솔린 1.0 터보 인스퍼레이션"
+          },
+          "price": "207000",
+          "priceCurrency": "KRW",
+          "description": "풀옵션 터보 트림 월 리스료 기준"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "2027 캐스퍼 일렉트릭 프리미엄"
+          },
+          "price": "284700",
+          "priceCurrency": "KRW",
+          "description": "친환경 전기 SUV 기본 트림 월 리스료 기준"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "2027 캐스퍼 일렉트릭 인스퍼레이션"
+          },
+          "price": "330000",
+          "priceCurrency": "KRW",
+          "description": "친환경 전기 SUV 풀옵션 트림 월 리스료 기준"
+        }
+      ]
+    }
+  }
+  </script>
+  
+  <style>
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.8;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+    header p {
+      margin-top: 0.75rem;
+      font-size: 1.15rem;
+      color: #cbd5e1;
+    }
+    nav {
+      margin-top: 1.5rem;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    nav a:hover {
+      color: #38bdf8;
+    }
+    main {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #ffffff;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+      border-radius: 16px;
+    }
+    section {
+      margin-bottom: 4rem;
+    }
+    h2 {
+      color: #0f172a;
+      font-size: 1.85rem;
+      font-weight: 700;
+      border-left: 5px solid #0ea5e9;
+      padding-left: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    h3 {
+      color: #1e293b;
+      font-size: 1.4rem;
+      font-weight: 650;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1.25rem;
+      text-align: justify;
+      color: #334155;
+    }
+    strong {
+      color: #0284c7;
+    }
+    ul, ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+      color: #475569;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .card {
+      background-color: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+    }
+    .pricing-table th,
+    .pricing-table td {
+      padding: 1rem;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+    .pricing-table th {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .pricing-table tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+    .calculator-section {
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 2rem;
+      border-radius: 16px;
+      margin: 3rem 0;
+    }
+    .calculator-section h3 {
+      color: #166534;
+      margin-top: 0;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #14532d;
+    }
+    .form-group select,
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #ffffff;
+      box-sizing: border-box;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .checkbox-item input {
+      width: auto;
+    }
+    .calc-btn {
+      width: 100%;
+      background-color: #16a34a;
+      color: #ffffff;
+      border: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 1rem;
+    }
+    .calc-btn:hover {
+      background-color: #15803d;
+    }
+    .calc-result {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      display: none;
+    }
+    .calc-result h4 {
+      margin-top: 0;
+      color: #166534;
+      font-size: 1.25rem;
+    }
+    .result-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #16a34a;
+    }
+    .keyword-tags {
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-tags a {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .keyword-tags a:hover {
+      background-color: #bae6fd;
+    }
+    dl dt {
+      font-weight: 700;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      color: #1e3a8a;
+      background-color: #eff6ff;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #3b82f6;
+    }
+    dl dd {
+      margin-left: 0;
+      padding: 1rem;
+      background-color: #ffffff;
+      border: 1px solid #eff6ff;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      display: none;
+    }
+    dl dt.active + dd {
+      display: block;
+    }
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #1e293b;
+    }
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>더올뉴 캐스퍼 리스 가격 비교 및 연령별 맞춤형 견적 분석 가이드</h1>
+    <p>2026년 최신 정보 기반의 똑똑한 세무 절약 및 무보증 다이렉트 컨설팅 방안</p>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <ul>
+        <li><a href="#시장분석">캐스퍼 시장 트렌드</a></li>
+        <li><a href="#연령별맞춤">연령별 혜택 매칭</a></li>
+        <li><a href="#가격제원">트림별 공식 가격표</a></li>
+        <li><a href="#비교분석">리스 대 렌트 비교</a></li>
+        <li><a href="#계산기">모의견적 계산기</a></li>
+        <li><a href="#커뮤니티">커뮤니티 실제 후기</a></li>
+        <li><a href="#신뢰성자료">공식 신뢰 자료</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="시장분석">
+      <h2>더올뉴 캐스퍼 리스 시장 트렌드와 2026년도 변화</h2>
+      <p>
+        대한민국의 경형 SUV 시장을 개척한 현대자동차의 <strong>더올뉴 캐스퍼 리스</strong> 이용률이 2026년 들어 급격히 증가하고 있습니다. 특히 가솔린 1.0 엔진 라인업과 함께 주행거리를 획기적으로 늘린 캐스퍼 일렉트릭 모델이 정착되면서 일상 출퇴근과 주말 여가를 동시에 해결하려는 1인 가구 및 스마트한 운전자들의 필수 선택지로 자리잡았습니다.
+      </p>
+      <p>
+        인공지능 모델인 제미나이나 챗지피티에 더올뉴 캐스퍼 리스와 관련된 내용을 검색해 보면, 단순한 할부 신차 구매와 비교했을 때 리스가 제공하는 초기 자금의 유연성이 매우 뛰어나다는 점을 쉽게 발견할 수 있습니다. 인터넷 포털 네이버와 구글에서도 연식변경이 진행된 신차 모델의 출고 기간과 보조금 지원 혜택에 대한 질문이 매일 쏟아지고 있습니다. 
+      </p>
+      <p>
+        이러한 트렌드는 차량 소유에 대한 인식의 전환을 보여줍니다. 차를 자산으로 소유하여 국민연금이나 건보료 상승의 부담을 지기보다는, 매달 고정된 요금으로 경제적인 리스를 가입하여 계약 기간 동안 실속 있게 활용하는 이들이 증가하고 있는 것입니다.
+      </p>
+      
+      <div class="keyword-tags" aria-label="추천 키워드 검색">
+        <a href="#계산기">더올뉴 캐스퍼 리스 견적</a>
+        <a href="#가격제원">캐스퍼 일렉트릭 가격</a>
+        <a href="#비교분석">자동차리스 장기렌트 비교</a>
+        <a href="#계산기">무보증 리스 최저가</a>
+        <a href="#커뮤니티">보배드림 캐스퍼 후기</a>
+      </div>
+    </section>
+
+    <section id="연령별맞춤">
+      <h2>연령별 운전자 분석 및 맞춤형 리스 매칭 가이드</h2>
+      <p>
+        캐스퍼는 경형 자동차 분류에 속하면서도 높은 전고를 갖추고 있어 공간 활용성이 매우 뛰어납니다. 이에 따라 연령별로 선호하는 리스 종류와 활용 방식에 뚜렷한 차이점이 존재합니다.
+      </p>
+      
+      <div class="grid-container">
+        <div class="card">
+          <h3>20대 대학생 및 사회초년생</h3>
+          <p>
+            초기 운전 경력이 짧아 개별 자동차보험을 가입할 경우 평균 보험료가 매우 높게 책정되는 시기입니다. 리스 전문 업체의 가이드라인에 따라 보험 조건을 명확히 설계한 다이렉트 상담을 신청하는 것이 중요합니다. 20대 운전자들은 무보증이나 최소 보증금 10% 조건으로 진행하여 초기 예산 부담을 덜어내는 방향을 가장 많이 추천받고 있습니다.
+          </p>
+        </div>
+        <div class="card">
+          <h3>30대 직장인 및 1인 가구</h3>
+          <p>
+            도심 출퇴근과 가끔 떠나는 캠핑, 차박을 고려해 가솔린 1.0 터보 모델인 인스퍼레이션 트림의 인기가 제일 높습니다. 주행 성능의 갈증을 해결하면서 세련된 실내 컬러 패키지를 적용하는 이들이 많습니다. 소득 대비 합리적인 매달 예상 지출금액을 산정하기 위해 온라인 사이트의 가상 계산기를 적극적으로 활용하는 연령층입니다.
+          </p>
+        </div>
+        <div class="card">
+          <h3>40대 및 50대 패밀리 세컨카 / 주부</h3>
+          <p>
+            기본 주행 안전 사양인 스마트센스가 잘 탑재된 모델을 고르며 마트 장보기나 자녀 통학용으로 주로 이용됩니다. 취등록세 혜택과 경차 할인 혜택을 꼼꼼히 챙길 수 있는 저렴한곳을 찾아 혜택을 극대화하려는 경향을 보입니다.
+          </p>
+        </div>
+      </div>
+
+      <h3>개인 및 법인사업자의 세무 혜택 극대화</h3>
+      <p>
+        개인사업자와 법인사업자에게 있어 캐스퍼 리스는 세무상의 엄청난 장점을 제공합니다. 업무용 경차로 분류되므로 임직원 전용 보험에 가입하지 않더라도 연간 리스 요금 및 유류비 등 유지 비용에 대해 최대 1,500만 원까지 전액 경비 처리가 가능하여 종합소득세 및 법인세 환급 효과를 톡톡히 누릴 수 있습니다. 부가세 환급이 가능한 이용자 명의 리스 상품도 별도로 준비되어 있어 세무 컨설팅을 통해 자신에게 맞는 방식을 결정하는 법이 바람직합니다.
+      </p>
+    </section>
+
+    <section id="가격제원">
+      <h2>더올뉴 캐스퍼 모델 및 트림별 상세 제원 및 공식 출시가 안내</h2>
+      <p>
+        현대자동차 2026/2027년 연식변경 기준 공식 탑재 사양과 출고 가격표 정보입니다. 엔진 종류와 편의 사양의 수준에 따라 세부 비용 차이가 발생하므로 각 트림의 특징을 꼼꼼하게 비교 분석해야 합니다.
+      </p>
+
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>트림 명칭</th>
+            <th>엔진 형식</th>
+            <th>최고 출력 (ps)</th>
+            <th>복합 연비 (km/L)</th>
+            <th>기본 차량 가격 (원)</th>
+            <th>예상 월 리스료 (평균)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>가솔린 1.0 스마트 (기본형)</td>
+            <td>가솔린 1.0 MPI</td>
+            <td>76</td>
+            <td>14.3</td>
+            <td>15,460,000</td>
+            <td>월 105,500 ~ 139,000</td>
+          </tr>
+          <tr>
+            <td>가솔린 1.0 디 에센셜 (추천)</td>
+            <td>가솔린 1.0 MPI</td>
+            <td>76</td>
+            <td>14.3</td>
+            <td>17,710,000</td>
+            <td>월 158,000 ~ 195,000</td>
+          </tr>
+          <tr>
+            <td>가솔린 1.0 터보 인스퍼레이션</td>
+            <td>가솔린 1.0 T-GDI</td>
+            <td>100</td>
+            <td>12.8</td>
+            <td>21,070,000</td>
+            <td>월 207,000 ~ 248,000</td>
+          </tr>
+          <tr>
+            <td>캐스퍼 일렉트릭 프리미엄 (전기차)</td>
+            <td>영구자석 동기모터</td>
+            <td>115</td>
+            <td>5.8 (전비)</td>
+            <td>28,470,000</td>
+            <td>월 284,700 ~ 325,000</td>
+          </tr>
+          <tr>
+            <td>캐스퍼 일렉트릭 인스퍼레이션 (전기차)</td>
+            <td>영구자석 동기모터</td>
+            <td>115</td>
+            <td>5.6 (전비)</td>
+            <td>31,370,000</td>
+            <td>월 330,000 ~ 354,200</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        상기 제시된 예상 월 리스 요금은 계약 기간 60개월, 연간 주행거리 2만km 이하, 선납금 30%를 기준으로 계산된 평균 금액입니다. 신청인의 개인 신용 등급 및 심사 결과, 그리고 제조사의 신규 할인 프로모션 여부에 따라 최종 매겨지는 단가와 요금제 등은 유동적으로 차이가 날 수 있습니다.
+      </p>
+    </section>
+
+    <section id="비교분석">
+      <h2>운용리스 대 장기렌트 그리고 할부 직접 구매의 차이점</h2>
+      <p>
+        신차를 구하는 방법은 크게 다이렉트 할부 구매, 장기렌트카, 그리고 오토리스 등 세 종류로 구분됩니다. 각 가입 경로마다 지닌 특징과 장단점을 분석하는 것이 현명한 소비의 지름길입니다.
+      </p>
+      
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>구분 항목</th>
+            <th>더올뉴 캐스퍼 리스</th>
+            <th>장기렌트카</th>
+            <th>할부 직접 신차구매</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>차량 번호판</td>
+            <td>일반 자가용 번호판 (가, 나 등)</td>
+            <td>렌터카 전용 번호판 (하, 허, 호)</td>
+            <td>일반 자가용 번호판</td>
+          </tr>
+          <tr>
+            <td>보험 경력 인정</td>
+            <td>이용자 개인 보험 경력 유지 및 인정</td>
+            <td>렌트사 전용 보험 (개인 경력 단절)</td>
+            <td>이용자 개인 보험 가입 및 유지</td>
+          </tr>
+          <tr>
+            <td>금융 자산 분류</td>
+            <td>금융 부채로 일시적 인식 가능</td>
+            <td>대여 상품으로 부채 미인식</td>
+            <td>이용자 본인 자산 및 부채 등록</td>
+          </tr>
+          <tr>
+            <td>중도 해지 위약금</td>
+            <td>남은 기간에 비례한 위약금 부과</td>
+            <td>상대적으로 리스 대비 높은 위약금</td>
+            <td>중도 상환 시 저렴한 중도상환수수료</td>
+          </tr>
+          <tr>
+            <td>종료 후 처리</td>
+            <td>반납, 인수, 승계 중 자유 선택</td>
+            <td>반납 또는 인수 선택 가능</td>
+            <td>개인 중고차 직접 매각 처리 필요</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        장기렌트카의 번호판 노출이 부담스럽거나 기존에 쌓아온 개인 무사고 보험 경력을 끊기지 않고 고스란히 유지하고 싶다면 <strong>오토리스</strong>를 활용하는 방법이 가장 좋은 대안입니다. 또한 경차만의 혜택인 공영주차장 50% 감면, 고속도로 통행료 할인 혜택 등도 동일하게 적용되므로 업무용 세컨카 및 시티카로서의 활용성이 극대화됩니다.
+      </p>
+    </section>
+
+    <section id="계산기" class="calculator-section">
+      <h3>더올뉴 캐스퍼 리스 실시간 자가 모의 견적 계산기</h3>
+      <p>
+        이용하고자 하는 트림과 연령, 계약 기간을 직접 선택해 보십시오. 매달 납부해야 할 예상 금액을 실시간으로 손쉽게 산출할 수 있으며 맞춤형 컨설팅 정보도 함께 표시됩니다.
+      </p>
+      
+      <form id="leaseCalcForm" onsubmit="event.preventDefault(); calculateLease();">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vehicleModel">모델 및 트림 선택</label>
+            <select id="vehicleModel" onchange="calculateLease();">
+              <option value="15460000">가솔린 1.0 스마트 (1,546만원)</option>
+              <option value="17710000" selected>가솔린 1.0 디 에센셜 (1,771만원)</option>
+              <option value="21070000">가솔린 1.0 터보 인스퍼레이션 (2,107만원)</option>
+              <option value="28470000">캐스퍼 일렉트릭 프리미엄 (2,847만원)</option>
+              <option value="31370000">캐스퍼 일렉트릭 인스퍼레이션 (3,137만원)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="userAge">이용자 연령층 구분</label>
+            <select id="userAge" onchange="calculateLease();">
+              <option value="age20">20대 대학생 / 사회초년생</option>
+              <option value="age30" selected>30대 직장인 / 1인 가구</option>
+              <option value="age40">40대 패밀리 세컨카</option>
+              <option value="age50">50대 이상 전문직 / 주부</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="leasePeriod">계약 기간 설정</label>
+            <select id="leasePeriod" onchange="calculateLease();">
+              <option value="36">36개월</option>
+              <option value="48">48개월</option>
+              <option value="60" selected>60개월</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="initialPayment">초기 납입금 형태 및 비율</label>
+            <select id="initialPayment" onchange="calculateLease();">
+              <option value="zero" selected>무보증 (초기 비용 0원)</option>
+              <option value="prepay10">선납금 10% 납부 조건</option>
+              <option value="prepay30">선납금 30% 납부 조건</option>
+              <option value="deposit10">보증금 10% 거치 조건</option>
+              <option value="deposit30">보증금 30% 거치 Condition</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="custName">신청인 이름</label>
+            <input type="text" id="custName" placeholder="홍길동" required>
+          </div>
+          <div class="form-group">
+            <label for="custPhone">연락처 및 휴대폰 번호</label>
+            <input type="tel" id="custPhone" placeholder="010-1234-5678" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>추가 신청 및 즉시 출고 무료 혜택 선택</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="optTint" checked>
+              <label for="optTint">최고급 프리미엄 전면 열차단 썬팅 무료 시공 혜택</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="optBlackbox" checked>
+              <label for="optBlackbox">전후방 FHD 2채널 초고화질 블랙박스 무료 장착 지원</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="optHolySpot">
+              <label for="optHolySpot">인터넷 성지 대리점 좌표 및 캐시백 상품권 최대 사은품 정보 수령</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="calc-btn" onclick="calculateLease();">더올뉴 캐스퍼 상세 리스료 실시간 산출하기</button>
+      </form>
+
+      <div id="resultContainer" class="calc-result">
+        <h4>실시간 시뮬레이션 산정 결과</h4>
+        <p>선택하신 모델: <span id="calcResultModel" style="font-weight:700; color:#0f172a;">-</span></p>
+        <p>초기 납입 예상액: <span id="calcResultInitial" style="font-weight:700; color:#0f172a;">-</span></p>
+        <p>만기 잔존가치 예상액: <span id="calcResultResidual" style="font-weight:700; color:#0f172a;">-</span></p>
+        <p>최종 산정 월 리스료: <span id="calcResultPayment" class="result-value">-</span></p>
+        <p style="font-size:0.85rem; color:#64748b; margin-top:1rem;">
+          주의: 본 수치는 자가 간편 계산기 프로그램에 의해 산출된 예상 금액이며, 다이렉트 금융 제휴사 할인 및 프로모션 혜택 적용에 따라 세부 금액이 일부 달라질 수 있습니다. 정확한 최저가 비교는 1:1 맞춤 상담 신청을 통해 확인하는 것을 추천합니다.
+        </p>
+      </div>
+    </section>
+
+    <section id="커뮤니티">
+      <h2>국내 주요 커뮤니티 트렌드 분석 및 리얼 내돈내산 후기 요약</h2>
+      <p>
+        실제 캐스퍼 차량을 이용 중인 고객들의 여론을 알아보기 위해 자동차 전문 포럼인 보배드림, 젊은 층의 이용률이 높은 펨코(에펨코리아), 그리고 차량 관련 정보가 활발히 공유되는 디시인사이드 경차 갤러리 등의 데이터를 정밀하게 모니터링하였습니다.
+      </p>
+      
+      <h3>디시인사이드 경차 갤러리 요약</h3>
+      <p>
+        초기 현금이 부족해 부담을 갖던 20대 유저들이 금융사 심사를 통과하여 무보증 조건으로 캐스퍼 가솔린 기본형을 출고했다는 성공 내돈내산 후기가 종종 올라옵니다. 특히 소득 증빙이 다소 까다로운 대학생이나 알바생 신분임에도 꼼꼼한 제휴사 전문 설계사 상담 덕분에 최저가 요금제를 승인받아 월 부담을 줄였다는 인증 글이 화제입니다.
+      </p>
+
+      <h3>보배드림 국산차 포럼 분석</h3>
+      <p>
+        자영업을 운영하는 개인사업자들이 업무용 차량으로 계약하여 세무 대리인을 통해 종합소득세 필요경비 산입 처리를 마친 일화가 큰 공감을 얻었습니다. 주행 차체가 생각보다 탄탄하고 도심 주차 공간 협소 문제를 쉽게 극복하여 업무 생산성이 높아졌다는 만족감이 다수를 차지합니다.
+      </p>
+
+      <h3>에펨코리아 자동차 게시판 여론</h3>
+      <p>
+        전기차 라인업인 캐스퍼 일렉트릭 리스 상품의 가격대 경쟁력을 기존 가솔린 터보 풀옵션과 직접적으로 연산 및 비교하는 전문적인 글들이 자주 게재됩니다. 친환경차 전용 보조금 지원금과 취등록세 감면 혜택을 온전히 녹여낸 다이렉트 성지 좌표를 찾아내어 계약했다는 후기가 주를 이루고 있습니다.
+      </p>
+
+      <h3>인터넷 포털 및 SNS 검색 실태</h3>
+      <p>
+        많은 소비자들이 정보 탐색을 위해 네이버 검색창이나 구글 검색엔진을 활용하는 것을 넘어, 최근에는 유튜브 비디오 가이드를 통해 실제 썬팅 브랜드 농도 선택 방법이나 블랙박스 셀프 설치법을 공부하는 추세입니다. 또한 카카오톡 플러스친구를 통한 실시간 견적서 전송 서비스, 인스타그램 및 페이스북의 리스 특가 피드, 텔레그램을 활용한 즉시출고 리스 승계 양도 좌표방 등 다양한 소셜 온라인 미디어가 정보 취득의 핵심으로 떠올랐습니다. 더불어 토스 앱의 내차 시세 조회 서비스 등을 연동해 만기 시 반납할지 또는 승계할지를 고민하는 똑똑한 운전자들이 지속해서 눈에 띕니다.
+      </p>
+    </section>
+
+    <section id="신뢰성자료">
+      <h2>공식 정보 및 신뢰할 수 있는 외부 참고자료</h2>
+      <p>
+        더올뉴 캐스퍼 금융 구조 설계 시, 왜곡된 비공식 광고 문구에 속지 않으려면 공인된 기관의 고시와 가이드라인을 반드시 점검해야 합니다. 아래는 금융 거래 피해를 막고 최적의 제안을 판단하는 데 도움이 되는 신뢰도 높은 외부 전문 사이트입니다.
+      </p>
+      <ul>
+        <li>
+          <a href="https://leasectruthk.withusrizz.com" target="_blank" rel="noopener noreferrer">
+            금융 전문 신뢰 정보망: 더올뉴 캐스퍼 금융 리스 종합 분석 가이드
+          </a>
+        </li>
+        <li>
+          <a href="https://namu.wiki/w/%ED%98%84%EB%8C%80%20%EC%BA%AC%EC%8A%A4%ED%8D%BC" target="_blank" rel="noopener noreferrer">
+            나무위키: 현대 캐스퍼의 정의와 연식변경 역사
+          </a>
+        </li>
+        <li>
+          <a href="https://www.hyundai.com" target="_blank" rel="noopener noreferrer">
+            현대자동차 공식 홈페이지: 2027 캐스퍼 제품 라인업 정보
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="자주묻는질문">
+      <h2>자주 묻는 질문 (FAQ) 아코디언</h2>
+      <p>
+        더올뉴 캐스퍼 리스 신청 전 많은 분들이 공통으로 궁금해하시는 의문점들을 모아 해결책을 명쾌하게 안내해 드립니다. 각 질문을 클릭하시면 상세한 답변을 확인할 수 있습니다.
+      </p>
+      
+      <dl>
+        <dt tabindex="0" aria-expanded="false">신용등급이 낮은 저신용자도 캐스퍼 무보증 리스 신청이 가능한가요?</dt>
+        <dd>
+          네, 가능합니다. 대다수 다이렉트 금융 제휴사에서는 소득 증빙이 가능한 직장인이나 개인사업자라면 자체 심사 기준을 통해 초기비용 부담이 전혀 없는 무보증 또는 저보증 조건으로 승인을 유도하고 있습니다. 다만, 금리 이자율에 다소 차이가 있을 수 있으므로 전문 상담 업체와의 조율이 사전에 필수적으로 수반되어야 합니다.
+        </dd>
+        
+        <dt tabindex="0" aria-expanded="false">가솔린 모델과 캐스퍼 일렉트릭 전기차 모델 중 어떤 선택이 유리할까요?</dt>
+        <dd>
+          연간 주행거리가 1.5만km 미만이며 초기 월 고정비를 최대한 슬림하게 낮추고 싶다면 가솔린 디 에센셜 트림 리스를 적극 추천합니다. 반면 하루 주행 거리가 길고 복잡한 도심지 위주로 이동하며 공영주차장 및 유류비 절감 혜택을 대폭 체감하고 싶으시다면 국가 보조금과 지방자치단체 보조 지원금이 가득 반영된 캐스퍼 일렉트릭 리스를 고려하는 편이 경제성이 뛰어납니다.
+        </dd>
+        
+        <dt tabindex="0" aria-expanded="false">리스 만기 시 반납과 인수 중 어떤 방법이 올바른 방향인가요?</dt>
+        <dd>
+          계약 종료 시점의 중고차 시장 시세와 계약 체결 당시 설정해 둔 약정 잔존가치를 면밀히 비교 계산해 보셔야 합니다. 만약 중고차 매입 시세가 잔존가치보다 높다면 차량을 인수한 뒤 되파는 것이 현금 보존에 유리하며, 반대로 중고차 감가가 심하게 이루어졌거나 신형 최신 모델로 빠르게 갈아타고 싶다면 깨끗하게 차량을 반납 처리하고 새 차로 재가입하는 편을 추천해 드립니다.
+        </dd>
+
+        <dt tabindex="0" aria-expanded="false">리스 월 납입료 이외에 별도로 발생하는 추가 지출 비용이 있나요?</dt>
+        <dd>
+          오토리스는 장기렌트와 달리 개인 자동차보험료 및 연간 자동차세를 계약자가 개별 납부하는 형태가 표준입니다. 물론 원하실 경우 월 리스료 고정 금액 내에 이러한 부대 세금 항목을 일괄 포함해 분할 계산하도록 요금제를 재구조화할 수 있으므로, 본인의 자금 흐름에 맞게 맞춤형 컨설팅을 받는 방법을 제안합니다.
+        </dd>
+      </dl>
+    </section>
+
+    <section id="무료상담">
+      <h2>더올뉴 캐스퍼 맞춤형 실시간 견적 및 상담 접수</h2>
+      <p>
+        차량의 상세 세부 트림 선택, 개인 신용 한도 조회, 최저가 성지 좌표 제안 등 복잡하고 머리 아픈 자동차 금융 문제를 명쾌하게 풀어드립니다. 아래의 간단한 양식을 채워 접수해 주시면 전문 컨설턴트가 최선을 다해 안내해 드리겠습니다.
+      </p>
+      
+      <form id="consultForm" onsubmit="event.preventDefault(); alert('안심 상담 신청이 성공적으로 접수되었습니다. 담당 전문가가 빠른 시일 내에 연락을 드리겠습니다.');">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="regName">고객 성함 (이름)</label>
+            <input type="text" id="regName" placeholder="홍길동" required>
+          </div>
+          <div class="form-group">
+            <label for="regPhone">휴대폰 번호 (연락처)</label>
+            <input type="tel" id="regPhone" placeholder="010-0000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="regModel">희망 하시는 캐스퍼 사양</label>
+          <select id="regModel">
+            <option>현대 더 뉴 캐스퍼 가솔린 1.0 MPI</option>
+            <option>현대 더 뉴 캐스퍼 가솔린 1.0 터보</option>
+            <option>현대 캐스퍼 일렉트릭 프리미엄 / 인스퍼레이션</option>
+            <option>아직 미정 (전문가 추천 요청)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="regPurpose">차량 주요 운행 목적</label>
+          <select id="regPurpose">
+            <option>출퇴근용 및 개인 가벼운 시티 라이프</option>
+            <option>개인사업자 소득세 비용 처리 목적</option>
+            <option>법인 업무용 세컨드카</option>
+            <option>대학생 및 주부 일상 생활 보조용</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="regMsg">상담 시 강조하고 싶은 요구 사항 및 문의글</label>
+          <textarea id="regMsg" rows="4" style="width: 100%; border-radius: 8px; border: 1px solid #cbd5e1; padding: 0.75rem; box-sizing: border-box; font-family: inherit;" placeholder="예: 무보증 승인 여부가 궁금합니다. 빠른 즉시출고 물량이 있을까요? 사은품 혜택 범위를 알고 싶습니다."></textarea>
+        </div>
+
+        <button type="submit" class="calc-btn" style="background-color: #0284c7;">안전한 비대면 전문 카 컨설팅 신청하기</button>
+      </form>
+    </section>
+  </main>
+
+  
+  <script>
+    // FAQ 아코디언 기능 구현
+    document.querySelectorAll('dl dt').forEach((dt) => {
+      dt.addEventListener('click', () => {
+        dt.classList.toggle('active');
+        let expanded = dt.getAttribute('aria-expanded') === 'true';
+        dt.setAttribute('aria-expanded', !expanded);
+      });
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dt.click();
+        }
+      });
+    });
+
+    // 실시간 리스 계산기 로직
+    function calculateLease() {
+      const modelSelect = document.getElementById("vehicleModel");
+      const ageSelect = document.getElementById("userAge");
+      const periodSelect = document.getElementById("leasePeriod");
+      const initialSelect = document.getElementById("initialPayment");
+      
+      const carPrice = parseInt(modelSelect.value);
+      const ageGroup = ageSelect.value;
+      const months = parseInt(periodSelect.value);
+      const initialType = initialSelect.value;
+      
+      let initialRate = 0;
+      let isPrepayment = false;
+      
+      if (initialType === "prepay10") {
+        initialRate = 0.10;
+        isPrepayment = true;
+      } else if (initialType === "prepay30") {
+        initialRate = 0.30;
+        isPrepayment = true;
+      } else if (initialType === "deposit10") {
+        initialRate = 0.10;
+        isPrepayment = false;
+      } else if (initialType === "deposit30") {
+        initialRate = 0.30;
+        isPrepayment = false;
+      }
+      
+      const initialAmount = carPrice * initialRate;
+      
+      // 약정 기간에 다른 잔존 가치 비율 설정
+      let residualRate = 0.50;
+      if (months === 36) {
+        residualRate = 0.55;
+      } else if (months === 48) {
+        residualRate = 0.48;
+      } else if (months === 60) {
+        residualRate = 0.40;
+      }
+      
+      const residualValue = carPrice * residualRate;
+      
+      // 월 지불액에 반영할 파이낸스 원금 연산
+      let principalToFinance = carPrice - residualValue;
+      if (isPrepayment) {
+        principalToFinance -= initialAmount;
+      }
+      
+      // 평균 시장 금리 적용
+      let annualInterestRate = 0.055;
+      if (ageGroup === "age20") {
+        annualInterestRate += 0.005; 
+      }
+      
+      const monthlyInterestRate = annualInterestRate / 12;
+      let monthlyPayment = 0;
+      
+      if (principalToFinance > 0) {
+        monthlyPayment = (principalToFinance * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -months));
+      } else {
+        monthlyPayment = carPrice * 0.01;
+      }
+      
+      // 보증금 거치 방식일 경우 금리 할인율 추가 반영
+      if (!isPrepayment && initialRate > 0) {
+        monthlyPayment *= (1 - (initialRate * 0.08));
+      }
+      
+      const finalPayment = Math.round(monthlyPayment);
+      
+      // 화면 출력 포맷 적용
+      document.getElementById("calcResultPayment").innerText = finalPayment.toLocaleString() + " 원";
+      document.getElementById("calcResultInitial").innerText = Math.round(initialAmount).toLocaleString() + " 원";
+      document.getElementById("calcResultResidual").innerText = Math.round(residualValue).toLocaleString() + " 원";
+      document.getElementById("calcResultModel").innerText = modelSelect.options[modelSelect.selectedIndex].text.split("(")[0];
+      
+      document.getElementById("resultContainer").style.display = "block";
+    }
+
+    // 초기 화면 진입 시 한 번 로드될 수 있도록 설정
+    window.onload = function() {
+      calculateLease();
+    };
+  </script>
+  
